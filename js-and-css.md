@@ -15,7 +15,7 @@ JS::begin();
     // bu alana scriptlerinizi yazabilirsiniz
     </script>
 <?php
-JS::end();;
+JS::end();
 ?>
 ```
 
