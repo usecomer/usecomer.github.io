@@ -12,7 +12,7 @@ use common\components\widgets\JS;
 JS::begin();
 ?>
     <script>
-    // bu alana scriptlerinizi yazabilirsiniz
+/*Bu alana Scriptlerinizi yazabilirsiniz */
     </script>
 <?php
 JS::end();
