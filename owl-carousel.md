@@ -55,9 +55,9 @@ window.productImages = function (owl) { // view kısmında verdiğimiz functionu
 
 .carousel.vertical-list {
   .owl-carousel {
-    display: flex !important;
     
     &:not(.owl-loaded) {//hangi ölçüde kaç item gösterilmesi gerektiğinin ayarlarıdır.
+      display: flex !important;
       .item {
         display: none;
         margin: 0 15px;
