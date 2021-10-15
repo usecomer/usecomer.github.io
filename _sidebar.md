@@ -25,6 +25,7 @@
 **   [GitHub](github.md)
 **   [Migrate](migrate.md)
 **   [Cache](cache.md)
+**   [Hatalar](errors.md)
 **   [SQL Request](sql.md)
 
 
