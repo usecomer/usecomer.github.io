@@ -1,9 +1,9 @@
-#Hatalar
+# Hatalar
 
 >Karşılaşabileceğiniz bazı hatalar burada belirtilmiştir
 
 
-##Block'um Sayfalar Sayfasına Düşmüyor
+## Block'um Sayfalar Sayfasına Düşmüyor
 
 Eklediğiniz block sayfalar sayfasında belirtiğiniz controller içinde görünmüyorsa yapmanız gerekenler
 
@@ -24,7 +24,7 @@ Eklediğiniz block sayfalar sayfasında belirtiğiniz controller içinde görün
 
 ```
 
-##"An error occurred while handling another error... Hatası
+## "An error occurred while handling another error... Hatası
 
 > Oluşturduğunuz actionda isimlendirme kuralına dikkat ediniz
 
