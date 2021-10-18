@@ -4,6 +4,8 @@
 
 ## Aynı Anda İki SQL Sorgusu Nasıl Yapılır
 
+>Örnek 1
+
 ```php
 
     public static function getAlsoBought($limit)
@@ -25,6 +27,8 @@
         return array_keys($model);
     }
 ```
+
+>Örnek 2
 
 ```php
 $stockAlarm = StockAlarm::find()->where([
