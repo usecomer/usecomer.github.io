@@ -26,5 +26,12 @@
     }
 ```
 
+```php
+$stockAlarm = StockAlarm::find()->where([
+    'status' => StockAlarm::STATUS_PENDING,
+    'product_id' => \common\models\Product::find()->select(['id'])->andWhere(['has_user' => $merchantId])
+])->count('id')
+```
+
 [Detaylar İçin Tıklayınız](https://www.yiiframework.com/doc/guide/2.0/en/db-query-builder)
 
