@@ -140,7 +140,7 @@ public function attributeLabels()
 
 >public static function getProperMethods($ids = [], $isActive = true)
 
-Bunu bilmiyorum
+
 
 ````php
 public static function getProperMethods($ids = [], $isActive = true)
@@ -220,7 +220,7 @@ public static function getProperMethods($ids = [], $isActive = true)
 
 >public static function getProperMethod($id, $isActive = true)
 
-Bunu bilmiyorum
+
 
 ````php
 public static function getProperMethod($id, $isActive = true)
@@ -237,7 +237,7 @@ public static function getProperMethod($id, $isActive = true)
 
 >public function afterFind()
 
-Bunu bilmiyorum
+
 
 ````php
 public function afterFind()
@@ -369,7 +369,7 @@ public function getPrice($detail, $modelProduct, $for = 'buyer')
 
 >public static function list_name($is_deleted = 0)
 
-Bunu bilmiyorum
+
 
 ````php
 public static function list_name($is_deleted = 0)
@@ -586,7 +586,7 @@ public function attributeLabels()
 
 > public function getShipment() 
 
-Bunu bilmiyorum
+
 
 ````php
 public function getShipment()
@@ -697,7 +697,7 @@ public function getMessageForMerchant()
 
 > public function getUniqId()
 
-Bunu bilmiyorum
+
 
 ````php
 public function getUniqId()
