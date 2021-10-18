@@ -18,6 +18,8 @@
 **   [Liste Kullanımı (Model List Items)](model-list-items.md)
 **   [Pazarlama Araçları](seo-tools.md)
 **   [Widget](widget.md)
+*   [Models](models.md)
+**   [Hasone - Hasmany ](hasone-hasmany.md)
 *   [Gii](gii.md)
 **   [CRUD](crud.md)
 *   [Test](test.md)
