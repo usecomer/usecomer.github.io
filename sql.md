@@ -37,5 +37,31 @@ $stockAlarm = StockAlarm::find()->where([
 ])->count('id')
 ```
 
+## Aynı Anda İki ya da Daha Fazla Tablo Kullanımı
+
+>Bu işlem için join kullanılmaktadır
+
+```
+    \common\models\ProductCategoryVariant::find()
+        ->alias('pcv')
+        ->leftJoin("product p", "pcv.product_id = p.id")
+        ->andWhere(["p.is_active" => 1])
+        ->select([
+            'pcv.*',
+            'p.parent_id',
+            'count(pcv.product_id) productCount',
+            'p.stock stock',
+            'p.type',
+            'p.price',
+            'c.payment_process_id',
+        ])->leftJoin('cart c', 'pcv.product_id = c.product_id')
+        ->andWhere(['or', ['c.payment_process_id' => 1], ['c.payment_process_id' => null]])
+        ->orderBy(['count(c.product_id)' => SORT_DESC])
+        ->cache(ActiveRecord::CACHE_DURATION_6_HOURS)
+        ->groupBy(['pcv.product_id'])
+        ->indexBy("product_id")->asArray()->all()
+
+```
+
 [Detaylar İçin Tıklayınız](https://www.yiiframework.com/doc/guide/2.0/en/db-query-builder)
 
