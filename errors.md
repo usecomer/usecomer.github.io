@@ -38,3 +38,23 @@ Eklediğiniz block sayfalar sayfasında belirtiğiniz controller içinde görün
     }
 
 ```
+
+## Composer Update Hatası
+
+```
+ [Composer\DependencyResolver\SolverProblemsException]                                                                       
+  Problem 1                                                                                                                   
+      - guzzlehttp/guzzle 7.4.x-dev requires symfony/deprecation-contracts ^2.2 -> no matching package found.                 
+      - paquettg/php-html-parser dev-master requires guzzlehttp/guzzle ^7.0 -> satisfiable by guzzlehttp/guzzle[7.4.x-dev].   
+      - Installation request for paquettg/php-html-parser dev-master -> satisfiable by paquettg/php-html-parser[dev-master].  
+                                                                                                                              
+  Potential causes:                                                                                                           
+   - A typo in the package name                                                                                               
+   - The package is not available in a stable-enough version according to your minimum-stability setting                      
+     see <https://getcomposer.org/doc/04-schema.md#minimum-stability> for more details.                                       
+   - It's a private package and you forgot to add a custom repository to find it                                              
+                                                                                                                              
+  Read <https://getcomposer.org/doc/articles/troubleshooting.md> for further common problems.                                 
+```
+
+>Composer güncellenirken böyle bir hata alıyorsanız `app/composer.json` path yolundaki dosyanızdaki minimum stablity alanıyla ya da php sürümünüzle alakalı olabilir eğer hatanın minimum stabilty ile alakalı olduğunu düşünüyorsanız bu satırı ve composer.json ın üstündeki vendoru `app/vendor` silip tekrar composer'i update ediniz.
