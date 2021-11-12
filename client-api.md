@@ -1,7 +1,5 @@
 # Client API Modülü
 
-> NameSpace app/common/models/GeneralOptions
-
 Client API modülü içinde yer alan dosyalar frontend tarafındaki 
 ajax ve form yapılarını kolaştıran bazı özellikler içerir.
 
