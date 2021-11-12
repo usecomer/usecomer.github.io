@@ -3,7 +3,7 @@
 >Karşılaşabileceğiniz bazı hatalar burada belirtilmiştir
 
 
-## Block'um Sayfalar Sayfasına Düşmüyor
+## Yeni Oluşturduğum Block Sayfalar Sayfasına Düşmüyor
 
 Eklediğiniz block sayfalar sayfasında belirtiğiniz controller içinde görünmüyorsa yapmanız gerekenler
 
