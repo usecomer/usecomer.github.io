@@ -8,7 +8,7 @@ ajax ve form yapılarını kolaştıran bazı özellikler içerir.
 Bu özelliklerden biri de **validateForm.js**; Client API tarafından gelen tüm sonuçları rahatlıkla yönetebilmeyi amaçlar. Yani API tartıdan bir JavaScript Function’ı rahatlıkla tetiklettirebiliriz. Ayrıca formlardaki validate yapısıyla uyumlu çalışmaktadır. Ekrana bir MessageBox basabiliriz. Ve bu yapının daha bir çok desteği mevcuttur.
 
 
-##### Öncelikle API'de yeni bir controller ve action açmaktan bahsedelim.
+> Öncelikle API'de yeni bir controller ve action açmaktan bahsedelim.
 ## Controller ve Action Oluşturma
 Controller ve Action oluşturma Yii2'nin standart yapısına yakın ilerlemektedir.
 Bu durumu ayıran bir kaç nokta vardır.
@@ -59,3 +59,155 @@ return $this->renderJson([
     "messageBox" => Yii::t('er', 'Ürün sepetinize eklenmeye çalışılırken bir hata aldık!'),
 ]);
 ```
+
+#### (string) redirect
+Bu key ile yönlendirmeler yapılır. Örneğin ürün listesinde bir ürünü 
+sepete eklettik ve kullanıcıyı sepet sayfasına yönlendirmek istersek 
+kullanabiliriz.
+
+Örnek kullanımı aşağıdadır:
+```php
+return $this->renderJson([
+    "success" => false,
+    "redirect" => SeoUrl::toInController("cart"),
+]);
+```
+
+#### (bool) redirect
+Bu key kullanıcının bulunduğu sayfayı yeniler. Yenileme işlemi AJAX olduğu için bazı durumlarda 
+sağlıklı çalışmayabilir. Bu yöntem kullanılıyorsa iyice **test etmek gerekli**dir.
+
+Örnek kullanımı aşağıdadır:
+```php
+return $this->renderJson([
+    "success" => false,
+    "reload" => true,
+]);
+```
+
+#### (array) globalLiveData
+Bu yapıyı daha iyi anlayabilmek için **Global Live Data** yapısını bilmeniz gerekmektedir.
+
+Global Live Data'yı burada da rahatlıkla kullanabilirsiniz. Bu yapının temel amacı sepet adedi gibi anlık değişebilecek 
+ve her zaman live olarak beklediğimiz verileri yönetmek için kullanılır.
+
+Örnek kullanımı aşağıdadır:
+```php
+return $this->renderJson([
+    "success" => false,
+    'globalLiveData' => ['cart' => ['count' => Cart::countUser()]]
+]);
+```
+
+#### (array) callFunctions
+Eğer bu API ile client tarafında bir veya daha fazla JavaScript Function'ı tetiklemek
+isterseniz bu key tam size göre. Bu yapıyı anlamak biraz zor gelebilir ama gerçekten çok
+kolay ve bazı durumlarda kutarıcı rolü büyüktür. Bu key çoklu olarak farklı işlemleri yapabilecek
+kabiliyettedir.
+
+> Bu yapıyı anlayabilmek birden fazla örnek ile pekiştirelim.
+
+Basit örnek kullanımı aşağıdadır:
+
+Mesela API'den sonuç geldikten sonra aşağıdaki gibi basit bir JavaScript çalıştırmak istiyorsanız.
+```javascript
+alert("Hello COMER!");
+```
+Aşağıdaki gibi kodu yazmak gereklidir.
+```php
+return $this->renderJson([
+    "success" => true,
+    "callFunctions" => [
+        [
+            "name" => "alert", // JavaScript Function'ın adı,
+            "params" => Yii::t('er', 'Hello COMER!') // JavaScript Function'ın alacağı ilk parametre; array ya da string olabilir,
+        ]   
+    ],
+]);
+```
+
+Karmaşık örnek kullanımı aşağıdadır:
+
+Mesela API'den sonuç geldikten sonra aşağıdaki gibi daha kapsamlı bir JavaScript çalıştırmak istiyorsanız.
+Bu senaryoda ürün sepete eklendikten sonra custom bir JavaScript Function'ı çalıştırmak amaçlanmıştır.
+
+Daha önceden block içinde bir JavaScript Function'ı oluşturduğumuzu varsayalım.
+```javascript
+function comerAddToCart(params){
+    console.log(params); // bir object basacaktır.
+}
+```
+Aşağıdaki gibi kodu yazmak gereklidir.
+```php
+return $this->renderJson([
+    "success" => true,
+    "callFunctions" => [
+        [
+            "name" => "comerAddToCart", // JavaScript Function'ın adı,
+            "params" => [
+                "product" => [
+                    "id" => "123",
+                    "category" => "Beyaz Eşyalar",
+                    "name" => "XPLUS Bulaşık Makinesi",
+                    "brand" => "Arçelik",
+                ],
+                "amount" => 1,
+                "price" => 10.20,
+                "currency" => "USD"
+            ]
+        ]   
+    ],
+]);
+```
+
+
+> Form alanlarına özel bazı özellikler de aşağıda belirtilmiştir. Bu key'ler her zaman HTML Form yapısı bekler.
+
+#### (string) || (array) message
+Form'ların üst kısmında alert tipinde mesaj göstermek için bu key'i kullanabilirsiniz.
+
+Örnek kullanımı aşağıdadır:
+```php
+return $this->renderJson([
+    "success" => false,
+    "message" => Yii::t('er', 'Üzgünüz, bu işlemi şu an gerçekleştiremiyoruz. Lütfen daha sonra tekrar deneyin.'),
+]);
+```
+
+#### (array) errors
+Form input'larına ajax validate yapabilmek için kullanabilirsiniz. 
+İki tip kullanım tekniği var;
+- Form içinde tek model validate edilirken.
+- Form içinde birden fazla model'i validate ederken.
+ 
+Tek model için örnek kullanımı aşağıdadır:
+```php
+return $this->renderJson([
+    "success" => false,
+    "errors" => $this->getValidate($model),
+]);
+```
+
+Multi model için örnek kullanımı aşağıdadır:
+```php
+return $this->renderJson([
+    "success" => false,
+    "errors" => $this->getValidateMultiple($model),
+]);
+```
+
+#### (bool) formReset : false
+Form'u response sonunda temizlemek isterseniz bu key size göre. 
+
+Varsayılan olarak **(boolean) false** döner.
+ 
+Örnek kullanımı aşağıdadır:
+```php
+return $this->renderJson([
+    "success" => true,
+    "formReset" => true,
+]);
+```
+
+
+
