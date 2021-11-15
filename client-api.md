@@ -40,7 +40,7 @@ Eğer işlem başarılı ise karşısına **(boolean) true** bekler, eğer başa
 return $this->renderJson(["success" => true]);
 ```
 
-#### (string) messageBox
+#### messageBox (string)
 Eğer ekrana **toasts tipi mesaj** başmak isterseniz bu key'i kullanabilirsiniz. Bu key de diğer key'lerde olduğu gibi **success** key'ini bekler.
 String içerir. 
 
@@ -58,7 +58,7 @@ return $this->renderJson([
 ]);
 ```
 
-#### (string) redirect
+#### redirect (string)
 Bu key ile yönlendirmeler yapılır. Örneğin ürün listesinde bir ürünü 
 sepete eklettik ve kullanıcıyı sepet sayfasına yönlendirmek istersek 
 kullanabiliriz.
