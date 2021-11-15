@@ -1,7 +1,7 @@
 # Client API Modülü
 
 Client API modülü içinde yer alan dosyalar frontend tarafındaki 
-ajax ve form yapılarını kolaştıran bazı özellikler içerir.
+ajax ve form yapılarını kolaylaştıran bazı özellikler içerir.
 
 Bu özelliklerden biri de **validateForm.js**; Client API tarafından gelen tüm sonuçları rahatlıkla yönetebilmeyi amaçlar. Yani API tartıdan bir JavaScript Function’ı rahatlıkla tetiklettirebiliriz. Ayrıca formlardaki validate yapısıyla uyumlu çalışmaktadır. Ekrana bir MessageBox basabiliriz. Ve bu yapının daha bir çok desteği mevcuttur.
 
@@ -14,7 +14,7 @@ Bu durumu ayıran bir kaç nokta vardır.
 Bazı **eski sürüm**lü projelerde *app/common/controllers/api* kullanılabilir. 
 - *common\controllers\api\Controller* class'ına extend edilmelidir.
 - Yii2'de de olduğu gibi yeni bir action'ın function adı **actionYeniBirAction** gibi public olarak eklenerek oluşturulur.
-- Yii2'nin standart render method'undan farklı olarak aşaığıdaki gibi render edilir.
+- Yii2'nin standart render method'undan farklı olarak aşağıdaki gibi render edilir.
 **renderJson** function'ı **array** ya da **object** bekler. 
 ```php
 public function actionYeniBirAction()
@@ -32,8 +32,8 @@ renderJson API içindeki sonuçların ajax ile view'e yansımasını kolaylaşt�
 validateForm.js ile bütünleşik çalışır. Bu method bazı özel key'ler ile yönetilir.
 Bunlar da sırasıyla şöyle;
 
-#### (bool) success (Zorunlu!)
-Eğer işlem başarılı ise karşısına **(boolean) true** bekler, eğer başarısız ise *(boolean) false** bekler. **Bu key kesinlikle her işlemde beklenir!** 
+####success (Zorunlu!) (bool) 
+Eğer işlem başarılı ise karşısına **(boolean) true** bekler, eğer başarısız ise **(boolean) false** bekler. **Bu key kesinlikle her işlemde beklenir!** 
 
 Örnek kullanımı aşağıdadır:
 ```php
@@ -71,7 +71,7 @@ return $this->renderJson([
 ]);
 ```
 
-#### (bool) redirect
+#### reload (bool)
 Bu key kullanıcının bulunduğu sayfayı yeniler. Yenileme işlemi AJAX olduğu için bazı durumlarda 
 sağlıklı çalışmayabilir. Bu yöntem kullanılıyorsa iyice **test etmek gerekli**dir.
 
@@ -83,7 +83,7 @@ return $this->renderJson([
 ]);
 ```
 
-#### (array) globalLiveData
+#### globalLiveData (array)
 Bu yapıyı daha iyi anlayabilmek için **Global Live Data** yapısını bilmeniz gerekmektedir.
 
 Global Live Data'yı burada da rahatlıkla kullanabilirsiniz. Bu yapının temel amacı sepet adedi gibi anlık değişebilecek 
@@ -97,10 +97,10 @@ return $this->renderJson([
 ]);
 ```
 
-#### (array) callFunctions
+#### callFunctions (array)
 Eğer bu API ile client tarafında bir veya daha fazla JavaScript Function'ı tetiklemek
 isterseniz bu key tam size göre. Bu yapıyı anlamak biraz zor gelebilir ama gerçekten çok
-kolay ve bazı durumlarda kutarıcı rolü büyüktür. Bu key çoklu olarak farklı işlemleri yapabilecek
+kolay ve bazı durumlarda kurtarıcı rolü büyüktür. Bu key çoklu olarak farklı işlemleri yapabilecek
 kabiliyettedir.
 
 > Bu yapıyı anlayabilmek birden fazla örnek ile pekiştirelim.
@@ -161,7 +161,7 @@ return $this->renderJson([
 
 > Form alanlarına özel bazı özellikler de aşağıda belirtilmiştir. Bu key'ler her zaman HTML Form yapısı bekler.
 
-#### (string) || (array) message
+#### message (string) || (array)
 Form'ların üst kısmında alert tipinde mesaj göstermek için bu key'i kullanabilirsiniz.
 
 Örnek kullanımı aşağıdadır:
@@ -172,7 +172,7 @@ return $this->renderJson([
 ]);
 ```
 
-#### (array) errors
+#### errors (array)
 Form input'larına ajax validate yapabilmek için kullanabilirsiniz. 
 İki tip kullanım tekniği var;
 - Form içinde tek model validate edilirken.
@@ -194,7 +194,7 @@ return $this->renderJson([
 ]);
 ```
 
-#### (bool) formReset : false
+#### formReset : false (bool)
 Form'u response sonunda temizlemek isterseniz bu key size göre. 
 
 Varsayılan olarak **(boolean) false** döner.
