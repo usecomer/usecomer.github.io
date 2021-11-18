@@ -2,7 +2,7 @@
 COMER içeride AJAX için eşsiz özellikler katmıştır. Size bunlardan bahseceğim.
 
 > Bu yapı **[Client API Modülü](client-api.md)** ile uyumlu çalışmaktadır. API yapısındaki bir çok özelliği desteklemektedir. Bundan dolayı 
->**Client API Modülü** tarafındaki yapıyı bilmekte fayda vardır.
+> **[Client API Modülü](client-api.md)**  tarafındaki yapıyı bilmekte fayda vardır.
 
 ## ajax-get kullanımı
 
