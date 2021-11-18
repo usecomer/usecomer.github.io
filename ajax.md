@@ -6,8 +6,8 @@ COMER içeride AJAX için eşsiz özellikler katmıştır. Size bunlardan bahsec
 
 ## ajax-get kullanımı
 
-Bu method iki kullanıma sahip aslında ikisi arasında işlevsel olarak çok bir fark yok ama HTML'de ihtiyacınız olan duruma göre birini tercih edebilirsiniz.
-Kullanım tekbikleri aşağıda:
+Bu method iki kullanıma sahip, aslında ikisi arasında işlevsel olarak çok bir fark yok ama HTML'de ihtiyacınız olan duruma göre birini tercih edebilirsiniz.
+Kullanım teknikleri aşağıda:
 
 **A** ile;
 ```php
@@ -32,4 +32,4 @@ window.myNewFunction = function (element, response){
 };
 ```
 
-Örnekte görüldüğü gibi ***myNewFunction*** adında bir function oluşturduk. 
+Örnekte görüldüğü gibi ***myNewFunction*** adında bir function oluşturduk. Bu yeni function'ın başında "**window.**" olmak zorunda yoksa bir hata alırsınız.
