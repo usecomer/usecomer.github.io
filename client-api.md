@@ -6,6 +6,7 @@ ajax ve form yapılarını kolaylaştıran bazı özellikler içerir.
 Bu özelliklerden biri de **validateForm.js**; Client API tarafından gelen tüm sonuçları rahatlıkla yönetebilmeyi amaçlar. Yani API tartıdan bir JavaScript Function’ı rahatlıkla tetiklettirebiliriz. Ayrıca formlardaki validate yapısıyla uyumlu çalışmaktadır. Ekrana bir MessageBox basabiliriz. Ve bu yapının daha bir çok desteği mevcuttur.
 
 
+
 > Öncelikle API'de yeni bir controller ve action açmaktan bahsedelim.
 ## Controller ve Action Oluşturma
 Controller ve Action oluşturma Yii2'nin standart yapısına yakın ilerlemektedir.
@@ -32,7 +33,7 @@ renderJson API içindeki sonuçların ajax ile view'e yansımasını kolaylaşt�
 validateForm.js ile bütünleşik çalışır. Bu method bazı özel key'ler ile yönetilir.
 Bunlar da sırasıyla şöyle;
 
-####success (Zorunlu!) (bool) 
+#### success (Zorunlu!) (bool) 
 Eğer işlem başarılı ise karşısına **(boolean) true** bekler, eğer başarısız ise **(boolean) false** bekler. **Bu key kesinlikle her işlemde beklenir!** 
 
 Örnek kullanımı aşağıdadır:
