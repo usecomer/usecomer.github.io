@@ -40,7 +40,7 @@ CSS::end();
 
 ```@import "../../../../web/assets/css/core/_bootstrap";```
 
-```
+```css
 @include bootstrap-respond-to(md) {
 
 .......
