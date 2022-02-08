@@ -43,9 +43,7 @@ CSS::end();
 ```css
 @include bootstrap-respond-to(md) {
 
-.......
-.......
-
+    /*Bu alana CSS kodlarınızı yazabilirsiniz */
 
     }
 ```
