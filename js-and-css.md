@@ -35,3 +35,21 @@ CSS::begin();
 CSS::end();
 ?>
 ```
+
+## CSS'te Respond Ayarları
+
+```@import "../../../../web/assets/css/core/_bootstrap";```
+
+```
+@include bootstrap-respond-to(md) {
+
+.......
+.......
+
+
+    }
+```
+
+> Responsive çalışmalar yapılırken mümkünse respond değerleri el ile verilmemelidir. Yukarıdaki kullanım gibi SCSS dosyalarında çalışılmalıdır.
+> 
+> 
