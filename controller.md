@@ -170,3 +170,48 @@ php yii queue/run
 ```
 
 * View işlemleri - Kod başlangıç alanında ```echo $usedNoCache;``` bu alan echo edilmelidir.
+
+## Comer Event
+
+Process oluşturmak ve kullanmak için yapılması gerekenler:
+
+> Controllerda yapılacak olan işlemler
+
+
+```php
+    public function actionRollbackProcess($id)
+    {
+        $model = $this->findModel($id); //modeli bul
+        $model->rollbackProcess($id); //rollback işlemini başlat
+        return $this->redirect(['nereye yönlendirilecek']);
+
+    } 
+```
+
+>Modelde yapılacak olan işlemler
+
+```php
+    public function rollbackProcess($id)
+    {
+        $model = self::findOne($id); //modeli bul
+        if (!$model) { //model yoksa
+            return false; //false döndür
+        }
+        $modelNew = new self(); //yeni model oluştur
+        $modelNew->user_id = $model->user_id; //yeni modelin user_id'sini eski modelin user_id'si ile eşitle
+        $modelNew->save(); //yeni modeli kaydet
+        return true; //true döndür
+    }
+```
+
+>Frontendde yapılacak olan işlemler
+
+```php
+Html::a('<span class="glyphicon glyphicon-repeat rollback-button"></span>', ['rollback-process', 'id' => $model->id], [
+                            'title' => Yii::t('er', 'İşlemi Geri Al'),
+                            'data' => [
+                                'confirm' => Yii::t('er', 'İşlemi geri almak istediğinize emin misiniz?'),
+                                'method' => 'post',
+                            ],
+                        ])
+```
